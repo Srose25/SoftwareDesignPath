@@ -1,6 +1,3 @@
-#Lab 02
-#Authentication Program
-
 # 1. Name:
 #      -Stockton Rose-
 
@@ -17,6 +14,10 @@
 # 5. How long did it take for you to complete the assignment?
 #      -total time in hours including reading the assignment and submitting the program-
 
+import json
 
+with open('Lab02.json', 'rt') as filehandle:
+    json_data = filehandle.read()
+    dictionary_data = json.loads(json_data)
+    print(dictionary_data['password'])
 
-how do read json?

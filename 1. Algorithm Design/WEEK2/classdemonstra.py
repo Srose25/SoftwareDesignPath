@@ -44,3 +44,65 @@ while not correct_input:
     age = int(input('please input your age: '))
     if age >= 0 and age <= 125:
         correct_input = True
+
+for i in range(5,10, 2): #(starting value, ending value, increment)
+    print(i)
+
+colors = ['blue', 'orange', 'pink', 'black', 'white']
+for color in colors:
+    print(color)
+
+
+#Lists/Arrays
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+print(alphabet[:5]) #prints abcde
+
+print(alphabet[5]) #prints e
+
+print(alphabet[10: 15]) #prints klmno
+
+print(alphabet[-5: -5]) #prints vwxyz
+
+#Functions
+def add_numbers(a, b, c, d=10): #d is an optional variable
+    total = a+b+c+d
+    return total
+
+total = add_numbers(1, 2, 3)
+print(total) #total == 16
+
+total = add_numbers(1, 2, 3, 4)
+print(total) #total == 10
+
+#txt files
+with open('my_data.txt', 'wt') as filehandle:
+    filehandle.write('hey bobby!')
+
+#You MUST use "with open()" every time you want to do
+#something different with a txt file
+
+with open('my_data.txt', 'rt') as filehandle:
+    data = filehandle.read()
+    print(data)
+
+#Dictionaries
+my_data = {'Name' : 'Bob', 'Address' : '555 5th street', 'Phone' : 5555555555}
+print(my_data['Name'])
+
+my_data['Email'] = 'Bobby@bebob.com' 
+#you can add a new key and data in the same dictionary
+#you can NOT add a new key that is the same name as a
+#key already in the dictionary. It will only update that
+#same key
+print(my_data)
+
+#JSON - JavaScript Object Notation
+import json
+with open('my_data.json', 'wt') as filehandle:
+    json_data = json.dumps(my_data)
+    filehandle.write(json_data)
+
+with open('my_data.json', 'wt') as filehandle:
+    json_data = filehandle.read()
+    dictionary_data = json.loads(json_data)
+    print(dictionary_data['Name'])

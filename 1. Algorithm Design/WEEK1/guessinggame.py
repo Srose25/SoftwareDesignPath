@@ -34,16 +34,15 @@ choice = 0
 
 while(choice != rnd):
     
-        choice = int(input('What is your guess? '))
-
-        if(choice == rnd):
-        
-            print('Congrats! You win!!')
-            break
-        
+    choice = int(input('What is your guess? '))
+    
+    if(choice == rnd):
+    
+        print('Congrats! You win!!')
+        break
+    
+    else:
+        if(choice > rnd):
+             print('lower')
         else:
-            if(choice > rnd):
-                 print('lower')
-
-            else:
-                 print('higher')
+             print('higher')
