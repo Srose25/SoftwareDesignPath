@@ -1,53 +1,14 @@
 # 1. Name:
-#      -your name-
+#      -Stockton Rose-
 # 2. Assignment Name:
 #      Lab 04: Monopoly
 # 3. Assignment Description:
-#      -describe what this program is meant to do-
+#      -This program is supposed to tell you whether or not you can place a hotel on Pennsylvania avenue or not-
 # 4. What was the hardest part? Be as specific as possible.
-#      Was it the syntax of Python?
-#      Was it an aspect of the problem you are to solve?
-#      Was it the instructions or any part of the problem definition?
-#      Was it the submission process?
+#     I think the hardest part was figuring out the best way to optimize the program
+#     There were lots of cases where what should come first was largely irrevlevant
 # 5. How long did it take for you to complete the assignment?
-#      -total time in hours including reading the assignment and submitting the program-
-
-#INPUT
-
-#Do you own all three green properties? (Done)
-#What is on Pacific Avenue? (done)
-#What is on North Carolina? (Done)
-#What is on Pennsylvania? (done)
-#How many hotels are available?
-#How many Houses are available?
-#How much cash do you have?
-
-
-#OUTPUT for successful cases
-
-#case 1
-#This will cost $[price].
-#Purchase 1 hotel and [number of houses] house(s).
-#Put 1 hotel on Pennsylvania and return any houses to the bank.
-#Put [number of houses] house(s) on North Carolina.
-#Put [number of houses] house(s) on Pacific.
-
-#case 2
-#This will cost $[price].
-#Purchase 1 hotel and [number of houses] house(s).
-#Put 1 hotel on Pennsylvania and return any houses to the bank.
-#Put [number of houses] house(s) on North Carolina.
-
-#case 3
-#This will cost $[price].
-#Purchase 1 hotel and [number of houses] house(s).
-#Put 1 hotel on Pennsylvania and return any houses to the bank.
-#Put [number of houses] house(s) on Pacific.
-
-#case 4
-#This will cost $[price].
-#Purchase 1 hotel and [number of houses] house(s).
-#Put 1 hotel on Pennsylvania and return any houses to the bank.
+#      This took me approximately 5 hours to complete
 
 #Constants
 BUILDING = 200
@@ -63,17 +24,38 @@ elif green == 'y': #Yes
     print('Enter a number between 0-5')
     print('0 = nothing, 1-4 = number of houses, 5 = a hotel\n')
 
+    #Get the inputs from the user
     pennsylvania = int(input('Pennsylvania Ave: '))
     nc = int(input('North Carolina: '))
     pacific = int(input('Pacific Ave: '))
+    print()
 
-    if pennsylvania and nc and pacific <= 4:
-        #LOGIC
-        print('you can place a hotel on pennsylvania')
+    if pennsylvania <= 4 and nc <= 4 and pacific <= 4:
+        houses = int(input('How many houses are available for purchase? '))
+        hotels = int(input('How many hotels are available for purchase? '))
+        cash = int(input('How much money do you have right now? '))
+        print()
 
-    elif nc or pacific == 5:
-        print('you may swap')
+        #figure out how many houses are needed
+        penn_needed = 4 - pennsylvania
+        nc_needed = 4 - nc
+        pac_needed = 4 - pacific
 
+        cost = (penn_needed * BUILDING) + (nc_needed * BUILDING) + (pac_needed * BUILDING) + BUILDING
+        print(f'Placing a hotel on Pennsylvania Ave will cost ${cost}.\nYou need {penn_needed} house(s) owned on Pennsylvania.\nYou need {nc_needed} house(s) owned on North Carolina.\nYou need {pac_needed} house(s) owned on Pacific.\n')
+
+        if houses >= (penn_needed + nc_needed + pac_needed):
+            if cash > cost:
+                if hotels >= 1:
+                    print('CONGRATS! You placed a hotel on Pennsylvania Ave')
+                else:
+                    print('There are no Hotels available for purchase.')
+            else:
+                print('You have insufficient funds.')
+        else:
+            print('There are no houses available for purchase.')
+    elif nc == 5 or pacific == 5:
+        print('Since you already own a hotel you may swap that and place it on Pennsylvania')
     elif pennsylvania == 5:
         print('you have a hotel on Pennsylvania')
 else: #Invalid
