@@ -17,17 +17,16 @@
 #       ELSE:
 #           is_on = TRUE
 
-#Variables
+import json
 
-#data
-#num_columns
-#num_rows
+with open('1. Algorithm Design/WEEK5-6/data.json', 'r') as file:
+    info = json.load(file)
 
-num_columns = 0
-num_rows = 0
-data = 0
+num_rows = info['num_rows']
+num_columns = info['num_columns']
+data = info['data']
 
-column_i = 130.06   #Open this file and get the index
-current_row = 0
-is_on = True
 
+image = [[0 for i in range(num_columns)] for i in range(num_rows)]
+for row in image:
+    print(row)
