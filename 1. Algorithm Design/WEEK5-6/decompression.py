@@ -25,8 +25,33 @@ with open('1. Algorithm Design/WEEK5-6/data.json', 'r') as file:
 num_rows = info['num_rows']
 num_columns = info['num_columns']
 data = info['data']
+counter = 0
+counter2 = 0
 
 
 image = [[0 for i in range(num_columns)] for i in range(num_rows)]
+
+
+for col_index in range(num_columns):
+    current_row = 0
+    is_on = True
+    pixel_value = 1 if is_on else 0
+
+    for run_length in data[col_index]:
+        for i in range(run_length):
+            counter += 1
+            if current_row < num_rows:
+                image[current_row][col_index] = pixel_value
+                current_row += 1
+
+        is_on = not is_on
+
 for row in image:
-    print(row)
+    line = ''
+    for pixel in row:
+        counter2 += 1
+        line += '#' if pixel == 1 else ' '
+    print(line)
+
+print(counter)
+print(counter2)
