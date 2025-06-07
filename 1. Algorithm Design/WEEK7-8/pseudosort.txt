@@ -1,0 +1,81 @@
+So the first thing that we're going to need to be doing is having our program 
+read through a list of 8 numbers and then pick the smallest number it sees,
+then compare and contrast it with each number it sees going down the list.
+Once it gets to the end it will swap the smallest number to the beginning of the
+list.
+
+
+#My Pseudocode
+FOR beginningnumber in range
+    if currentnumber < beginningnumber
+        SWAP currentnumber <- beginningnumber
+    ELSE
+        beginningnumber ->
+
+
+#AI Pseudocode
+function selectionSort(list):
+    for i from 0 to length of list - 1:
+        minIndex = i
+
+        for j from i+1 to length of list - 1:
+            if list[j] < list[minIndex]:
+                minIndex = j
+
+        if minIndex ≠ i:
+            swap list[i] and list[minIndex]
+
+
+#My analysis
+I didn't think to add the second for loop here as well. I also decided to make this a lot more
+readable than both my earlier code and the ai's code. The ai had much better logic since it 
+accounted for the second loop. It however didn't have good naming conventions and was hard to
+understand. I had to drastically change my pseudocode by the end.
+
+
+#My Updated Pseudocode
+#A
+FOR currentNumber in numberList - 1:
+    smallestNumber = currentNumber  #This by default sets the smallest number to the number we start on.
+
+    #B
+    FOR check from currentNumber + 1 to length of numberList - 1: #Check our number to the end of the list.
+        
+        
+        IF numberList[check] < numberList[smallestNumber]:        #Check if our current number is smaller than
+            
+            
+            smallestNumber = check                                #the one we started on.
+
+    #C
+    IF smallestNumber != currentNumber: #If the number we checked is smaller than our original number the swap them.
+        SWAP numberList[currentNumber] and numberList[smallestNumber]
+
+
+
+numberList = [5, 3, 2, 1]
+
+Step   | currentNumber | check | smallestNumber | Output List
+--------------------------------------------------------------
+A0     |       0       |   -   |        0       | [5, 3, 2, 1]
+B0.1   |       0       |   1   |        1       | [5, 3, 2, 1]
+B0.2   |       0       |   2   |        2       | [5, 3, 2, 1]
+B0.3   |       0       |   3   |        3       | [5, 3, 2, 1]
+C0     |       0       |   -   |        3       | [1, 3, 2, 5] #5 and 1 swap
+
+A1     |       1       |   -   |        1       | [1, 3, 2, 5]
+B1.1   |       1       |   2   |        2       | [1, 3, 2, 5]
+B1.2   |       1       |   3   |        2       | [1, 3, 2, 5]
+C1     |       1       |   -   |        2       | [1, 2, 3, 5] #3 and 2 swap
+
+A2     |       2       |   -   |        2       | [1, 2, 3, 5]
+B2.1   |       2       |   3   |        2       | [1, 2, 3, 5]
+C2     |       2       |   -   |        2       | [1, 2, 3, 5] #nothing needs to swap
+
+A3     |       3       |   -   |        3       | [1, 2, 3, 5]
+C3     |       3       |   -   |        3       | [1, 2, 3, 5] #final loop
+
+#Final Sorted List: [1, 2, 3, 5]
+
+The program loops through about 10 times in total for about 4 data points
+so the algorithmic efficiency is about O(n**2)
