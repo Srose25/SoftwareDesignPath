@@ -1,5 +1,13 @@
 import math
 
+def my_assert(expression, message, code):
+    if not expression:
+        print('fAssert Failed')
+        print(f'Assert Message {message}')
+        print(f'Assert Error Code {code}')
+        exit(1)
+
+
 def calculate_circle_area(radius):
     assert radius > 0
     assert type(radius) == type(0.0)
@@ -27,6 +35,9 @@ def obtain_user_radius():
     return radius
 
 def main():
+    if __debug__:
+        my_assert(1>2, "Hey Bob", "49.2.3")
+    
     radius = obtain_user_radius()
     calculate_circle_area(radius)
 
