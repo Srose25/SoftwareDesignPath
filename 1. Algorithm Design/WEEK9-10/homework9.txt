@@ -1,1 +1,31 @@
-I'm going to do my assignement in this file
+1. 10 days      10/15/1999 - 10/25/1999
+    25 - 15 = 10 days
+
+2. 39 days      10/23/1999 - 12/1/1999
+    Oct = 31 - 23 = 8
+    Nov = 30
+    Dec = 1
+    8 + 30 + 1 = 39 days
+
+3. 1596 days    10/21/1999 - 3/4/2004
+    year2000 - year2004 = 365 * 3 + 366 = 1461      #2000 is a leap year
+    1999
+        Octdays = 31 - 21 = 10
+        Novdays = 30
+        Decdays = 31
+    2004
+        Jan = 31
+        Feb = 29
+        Mar = 4
+    1460 + 10 + 30 + 31 + 31 + 29 + 4
+
+
+#Explaination
+For this problem we should very first figure out which years are leap years.
+This will help us later on with more difficult problems. After we figure out
+years are leap years we will need to figure out how many days are in each month.
+Either that or find a way for us to easily calculate what day of the year it is
+by having the computer look at the month and day. That way we won't need to have 
+the program remember variables for several months. After we find out what day we
+can start and stop on then we begin our calculations finding out how many days are
+in the different dates. Once that's finished we print the final output.
