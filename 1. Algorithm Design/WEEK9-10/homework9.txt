@@ -21,11 +21,203 @@
 
 
 #Explaination
-For this problem we should very first figure out which years are leap years.
-This will help us later on with more difficult problems. After we figure out
-years are leap years we will need to figure out how many days are in each month.
-Either that or find a way for us to easily calculate what day of the year it is
-by having the computer look at the month and day. That way we won't need to have 
-the program remember variables for several months. After we find out what day we
-can start and stop on then we begin our calculations finding out how many days are
-in the different dates. Once that's finished we print the final output.
+For this problem we should very first figure out the start and end dates, 
+and which years are leap years.This will help us later on with more difficult
+problems. After we figure out years are leap years we will need to figure out
+how many days are in each month. Either that or find a way for us to easily 
+calculate what day of the year it is by having the computer look at the month 
+and day. That way we won't need to have the program remember variables for 
+several months. After we find out what day we can start and stop on then we 
+begin our calculations finding out how many days are in the different dates. 
+Once that's finished we print the final output.
+
+
+#My pseudocode
+startdate = INPUT
+enddate = INPUT
+
+startdate = convert DATE to INT
+enddate = convert DATE to INT
+
+FOR years
+    IF Year = Centennial Leap year OR Year = Leap Year
+        Year += 366
+    ELSE
+        Year += 365
+    
+StartDate = Year - startdate
+EndDate = Year - enddate
+
+print(Year)
+
+
+#AI pseudocode
+START
+
+FUNCTION is_leap_year(year):
+    IF year divisible by 4 AND (not divisible by 100 OR divisible by 400):
+        RETURN True
+    ELSE:
+        RETURN False
+
+FUNCTION days_in_month(month, year):
+    IF month is April, June, September, or November:
+        RETURN 30
+    ELSE IF month is February:
+        IF is_leap_year(year):
+            RETURN 29
+        ELSE:
+            RETURN 28
+    ELSE:
+        RETURN 31
+
+FUNCTION days_since_start_of_year(month, day, year):
+    total_days = 0
+    FOR m FROM 1 TO (month - 1):
+        total_days += days_in_month(m, year)
+    total_days += day
+    RETURN total_days
+
+FUNCTION total_days_between(start_month, start_day, start_year, end_month, end_day, end_year):
+    IF start_year == end_year:
+        start_day_of_year = days_since_start_of_year(start_month, start_day, start_year)
+        end_day_of_year = days_since_start_of_year(end_month, end_day, end_year)
+        RETURN end_day_of_year - start_day_of_year
+
+    ELSE:
+        days_in_start_year = days_in_year(start_year) - days_since_start_of_year(start_month, start_day, start_year)
+        days_in_end_year = days_since_start_of_year(end_month, end_day, end_year)
+
+        total_days = days_in_start_year + days_in_end_year
+
+        FOR year FROM (start_year + 1) TO (end_year - 1):
+            IF is_leap_year(year):
+                total_days += 366
+            ELSE:
+                total_days += 365
+
+        RETURN total_days
+
+FUNCTION days_in_year(year):
+    IF is_leap_year(year):
+        RETURN 366
+    ELSE:
+        RETURN 365
+
+MAIN PROGRAM:
+    Input start date (start_month, start_day, start_year)
+    Input end date (end_month, end_day, end_year)
+
+    total_days = total_days_between(start_month, start_day, start_year, end_month, end_day, end_year)
+
+    Print total_days
+
+END
+
+
+#My Updated Pseudocode
+#AA
+FUNCTION start_of_year(month, day, year):
+    total_days = 0
+    #AA.1
+    FOR month FROM 1 TO (month - 1):
+        #AA.2
+        total_days += days_in_month(month, year)
+
+    #AA.3
+    total_days += day
+
+    RETURN total_days
+
+#BB
+FUNCTION days_in_year(year):
+    IF year divisible by 4 AND (not divisible by 100 OR divisible by 400):
+        RETURN 366
+    ELSE:
+        RETURN 365
+
+#CC
+FUNCTION days_in_month(month, year):
+    IF month is April, June, September, or November:
+        RETURN 30
+
+    ELSE IF month is February:
+        IF year divisible by 4 AND (not divisible by 100 OR divisible by 400):
+            RETURN 29
+        ELSE:
+            RETURN 28
+
+    ELSE:
+        RETURN 31
+
+MAIN PROGRAM:
+    Input start date (start_month, start_day, start_year)
+    Input end date (end_month, end_day, end_year)
+
+    #A
+    IF start_year == end_year:
+        #A1
+        start_day = start_of_year(start_month, start_day, start_year)
+        #A2
+        end_day = start_of_year(end_month, end_day, end_year)
+        
+        #A3
+        total_days = end_day - start_day
+
+    #B
+    ELSE:
+        #B1
+        start_day = days_in_year(start_year) - start_of_year(start_month, start_day, start_year)
+        #B2
+        end_day = start_of_year(end_month, end_day, end_year)
+
+        #B3
+        total_days = start_day + end_day
+
+        #C
+        FOR year FROM (start_year + 1) TO (end_year - 1):
+            total_days += days_in_year(year)
+
+    PRINT total_days
+
+
+November 17th 2002 - April 6th 2004
+#Trace Table
+|STEP|start_day|end_day|year|total_days|
+| B  |   00    |  00   | 00 |    00    |
+| B1 |   00    |  00   | 00 |    00    |
+| BB |   365   |  00   | 00 |    00    |
+| AA |   365   |  00   | 00 |    00    |
+|AA.1|   365   |  00   | 00 |    00    |
+|AA.2|   365   |  00   | 00 |    00    |
+| CC |   365   |  00   | 00 |    00    | #NOVEMBER #17
+|AA.2|   365   |  00   | 00 |    00    |
+| CC |   365   |  00   | 00 |    00    | #DECEMBER #31
+|AA.2|   365   |  00   | 00 |    00    |
+|AA.3|   44    |  00   | 00 |    00    |
+| B2 |   44    |  00   | 00 |    00    |
+|AA.1|   44    |  00   | 00 |    00    |
+|AA.2|   44    |  00   | 00 |    00    |
+| CC |   44    |  00   | 00 |    00    | #JANUARY #30
+|AA.2|   44    |  00   | 00 |    00    |
+| CC |   44    |  00   | 00 |    00    | #FEBRUARY #29
+|AA.2|   44    |  00   | 00 |    00    |
+| CC |   44    |  00   | 00 |    00    | #MARCH #31
+|AA.2|   44    |  00   | 00 |    00    |
+| CC |   44    |  00   | 00 |    00    | #APRIL #6
+|AA.3|   44    |  96   | 00 |    00    |
+| B3 |   44    |  96   | 00 |    140   |
+| C  |   44    |  96   | 00 |    00    | #2003
+| BB |   44    |  96   | 365|    00    |
+| C.1|   44    |  96   | 365|    505   | #total_days + year
+
+| 00 |   00    |  00   | 00 |    00    | #template
+
+
+#Algorithmic efficiency
+At best this program is O(1) in the event that the two dates are 
+from the same year. At worst the program is O(n) and scales some
+what linearly the higher it goes. It scales linearly, since at 
+most, the (days_in_month) function will only need to loop through
+11 times max. That is also dependant on how many years the two dates
+have in between them.
