@@ -44,10 +44,9 @@ def main():
 
 
 
-
+#class examples
 
 #loop types
-
 def simple_loop():
     numbers = 10
     sum = 0
@@ -79,4 +78,4 @@ def nested_loop():
         print()
         for n in range(1, count):
             print('*', end='')
-nested_loop()
+#nested_loop()
