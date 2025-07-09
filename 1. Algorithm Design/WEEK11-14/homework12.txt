@@ -1,0 +1,21 @@
+#Project Description
+
+First we need to take the data that we have, create an interval of ten, 
+analyze that interval of ten, and find the average. We need to then loop 
+through the data until we have the right amount of intervals and averages. 
+Then we need to compare the averages and find out what the best one is.
+
+
+#By Hand
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+interval1 = 1+2+3+4+5+6+7+8+9+10 / 10     =
+interval2 = 2+3+4+5+6+7+8+9+10+11 / 10    =
+interval3 = 3+4+5+6+7+8+9+10+11+12 / 10   =
+interval4 = 4+5+6+7+8+9+10+11+12+13 / 10  = 
+interval5 = 5+6+7+8+9+10+11+12+13+14 / 10 = 
+
+
+#My Pseudo Code
+
+FOR i in range(data)
