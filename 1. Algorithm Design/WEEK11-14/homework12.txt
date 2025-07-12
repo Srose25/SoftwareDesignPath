@@ -9,13 +9,195 @@ Then we need to compare the averages and find out what the best one is.
 #By Hand
 
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-interval1 = 1+2+3+4+5+6+7+8+9+10 / 10     =
-interval2 = 2+3+4+5+6+7+8+9+10+11 / 10    =
-interval3 = 3+4+5+6+7+8+9+10+11+12 / 10   =
-interval4 = 4+5+6+7+8+9+10+11+12+13 / 10  = 
-interval5 = 5+6+7+8+9+10+11+12+13+14 / 10 = 
+interval1 = 1+2+3+4+5+6+7+8+9+10 / 10     = 5.5
+interval2 = 2+3+4+5+6+7+8+9+10+11 / 10    = 6.5
+interval3 = 3+4+5+6+7+8+9+10+11+12 / 10   = 7.5
+interval4 = 4+5+6+7+8+9+10+11+12+13 / 10  = 8.5
+interval5 = 5+6+7+8+9+10+11+12+13+14 / 10 = 9.5 #Highest (best) average
 
 
 #My Pseudo Code
 
-FOR i in range(data)
+#This function is important in the event that we're opening a json file
+function OPEN_FILE()
+    read data
+    return data
+
+
+"""
+This function loops through the data at a set increment of 10, and does that 
+an amount of times determined by the user for different intervals of the data.
+It then calculates the average from that increment of ten and stores it in a subarray.
+"""
+function SUBARRAY(data)
+    starting_value = 0                                          #we're starting at zero
+    GET num_of_subarray                                         #how many averages we're looking for
+    averages_list = list[]                                      #a list contaning every average 
+
+    While starting_value <= num_of_subarrays
+        average = 0
+        FOR i in data(starting_value, num_of_subarrays + 10, 1) #starts on the right value, in increments of 10, counting up by 1
+            average += i                                        #Add up our numbers
+
+        averages_list.append(average / 10)                      #1. append our averages list to reflect the average
+        #                                                       #2. Add that average to our averages list
+        starting_value += 1                                     #Increment our original loop up by one
+    
+    return averages_list
+
+
+function MAIN()
+    file = GET "name_of_file"
+    data = OPEN_FILE(file) #This Is only important if we're dealing with jsons
+
+    averages_list = SUBARRAY(data)
+    print(averages_list)
+
+
+
+#AI Pseudo Code
+
+START
+
+1. Load the power data (14 numbers total)
+
+2. Set best_average to 0
+3. Set best_interval_start_index to 0
+
+4. LOOP through the dataset:
+   a. For index i from 0 to (length of data - 10)
+      i.   Extract 10 values starting at index i (i.e., data[i:i+10])
+      ii.  Compute the average of those 10 values
+      iii. If this average > best_average:
+             - Update best_average with this average
+             - Save the current index i as best_interval_start_index
+
+5. Output:
+   a. The best 10-value interval (from best_interval_start_index to best_interval_start_index + 9)
+   b. The corresponding best_average
+
+END
+
+
+
+#My Updated Pseudo Code
+
+#This function is important in the event that we're opening a json file
+function OPEN_FILE()
+    read data
+    return data
+
+
+"""
+This function loops through the data at a set increment of 10, and does that 
+an amount of times determined by the user for different intervals of the data.
+It then calculates the average from that increment of ten and stores it in a subarray.
+"""
+function SUBARRAY(data)
+    starting_value = 0                                                  #we're starting at zero
+    GET num_of_subarray                                                 #how many averages we're looking for
+    averages_list = list[]                                              #a list contaning every average 
+
+
+    While starting_value <= num_of_subarrays                    [A]
+        average = 0
+
+        FOR i in data(starting_value, num_of_subarrays + 10, 1) [B]     #starts on the right value, in increments of 10, counting up by 1
+            current_average += i                                [bb]    #Add up our numbers
+
+        average = averages_list.append(average / 10)            [C]     #1. append our averages list to reflect the average
+        -                                                               #2. update the current average to reflect that same number
+
+        starting_value += 1                                     [D]     #Increment our original loop up by one
+
+        IF average < best_average                                       #Update best_average
+            best_average = average                              [E]
+    
+    return averages_list, best_average
+
+
+function MAIN()
+    best_average = 0
+    file = GET "name_of_file"
+    data = OPEN_FILE(file) #This Is only important if we're dealing with jsons
+
+    averages_list, best_average = SUBARRAY(data)
+    print(averages_list)
+    print(f'The Highest Average was {best_average}')
+
+
+#Changes I Made
+I added functionality to compare and print the best average. I'm not 100%
+with functions still but I believe I should be able to update that variable
+in a secondary function like how I have it in my updated Pseudo Code.
+
+
+#Trace Table
+
+data = 41, 45, 47, 32, 49, 40, 32 #Creating subarrays of 4
+
+|Step|best_average|       averages_list       |starting_value|average|
+|  A |    00.0    |    00.0,00.0,00.0,00.0    |      0       |   0   |
+|  B |    00.0    |    00.0,00.0,00.0,00.0    |      0       |   0   |
+|bb.1|    00.0    |    00.0,00.0,00.0,00.0    |      0       |   41  |
+|bb.2|    00.0    |    00.0,00.0,00.0,00.0    |      0       |   86  |
+|bb.3|    00.0    |    00.0,00.0,00.0,00.0    |      0       |   133 |
+|bb.4|    00.0    |    00.0,00.0,00.0,00.0    |      0       |   165 |
+|  C |    00.0    |    41.25,00.0,00.0,00.0   |      0       |   165 |
+|  D |    00.0    |    41.25,00.0,00.0,00.0   |      1       |   165 |
+|  E |    16.5    |    41.25,00.0,00.0,00.0   |      1       |   165 |
+
+|  A |    16.5    |    41.25,00.0,00.0,00.0   |      1       |   0   |
+|  B |    16.5    |    41.25,00.0,00.0,00.0   |      1       |   0   |
+|bb.1|    16.5    |    41.25,00.0,00.0,00.0   |      1       |   45  |
+|bb.2|    16.5    |    41.25,00.0,00.0,00.0   |      1       |   92  |
+|bb.3|    16.5    |    41.25,00.0,00.0,00.0   |      1       |   124 |
+|bb.4|    16.5    |    41.25,00.0,00.0,00.0   |      1       |   173 |
+|  C |    16.5    |    41.25,43.5,00.0,00.0   |      1       |   173 |
+|  D |    16.5    |    41.25,43.5,00.0,00.0   |      2       |   173 |
+|  E |    43.5    |    41.25,43.5,00.0,00.0   |      2       |   173 |
+
+|  A |    43.5    |    41.25,43.5,00.0,00.0   |      2       |   0   |
+|  B |    43.5    |    41.25,43.5,00.0,00.0   |      2       |   0   |
+|bb.1|    43.5    |    41.25,43.5,00.0,00.0   |      2       |   47  |
+|bb.2|    43.5    |    41.25,43.5,00.0,00.0   |      2       |   79  |
+|bb.3|    43.5    |    41.25,43.5,00.0,00.0   |      2       |   128 |
+|bb.4|    43.5    |    41.25,43.5,00.0,00.0   |      2       |   168 |
+|  C |    43.5    |    41.25,43.5,42.5,00.0   |      2       |   168 |
+|  D |    43.5    |    41.25,43.5,42.5,00.0   |      3       |   168 |
+|  E |    43.5    |    41.25,43.5,42.5,00.0   |      3       |   168 |
+
+|  A |    43.5    |    41.25,43.5,42.5,00.0   |      3       |   0   |
+|  B |    43.5    |    41.25,43.5,42.5,00.0   |      3       |   0   |
+|bb.1|    43.5    |    41.25,43.5,42.5,00.0   |      3       |   32  |
+|bb.2|    43.5    |    41.25,43.5,42.5,00.0   |      3       |   81  |
+|bb.3|    43.5    |    41.25,43.5,42.5,00.0   |      3       |   121 |
+|bb.4|    43.5    |    41.25,43.5,42.5,00.0   |      3       |   153 |
+|  C |    43.5    |    41.25,43.5,42.5,38.25  |      3       |   153 |
+|  D |    43.5    |    41.25,43.5,42.5,38.25  |      4       |   153 |
+|  E |    43.5    |    41.25,43.5,42.5,38.25  |      4       |   153 |
+
+|  A |    43.5    |    41.25,43.5,42.5,38.25  |      4       |   0   |
+
+|00.0|    00.0    |    41.25,43.5,42.5,38.25  |      0       |   0   |#Template
+
+
+#Efficiency: O(n)
+This program while complicated is linear. Depending on how many times we need to
+run through to compare all the averages the program will only loop through a set
+number of times. In the example of the trace table it was 4, and in the final 
+product it will be ten. This is thanks to the program having a save point for 
+where it's at in the list, so it can start one value higher than the last time.
+
+
+
+#How Long everything took
+Description: 5 minutes
+By Hand: 10 minutes
+Pseudo Code: 60 minutes + 30 minutes
+Ai: 5 minutes
+Updated Pseudo Code: 15 minutes
+Explaination: 1 minutes
+Trace: 30 minutes + 30 minutes
+Efficiency: 15 minutes
+
