@@ -44,3 +44,94 @@ function MAIN()
     print(averages_list)
     print(f'The Highest Average was {best_average}')
 """
+
+
+import os
+import traceback
+import inspect
+import json
+
+
+def my_assert(expression, message):
+    if not expression:
+        #Print Error Message
+        print("Assert Failed")
+        print(f'Message: {message}')
+        
+        # Get the calling frame (where the assert failed)
+        caller_frame = inspect.currentframe().f_back
+        filename = caller_frame.f_code.co_filename
+        function_name = caller_frame.f_code.co_name
+        line_no = caller_frame.f_lineno
+
+        # Print Error Info
+        print(f"Occurred in file: {filename}")
+        print(f"In function: {function_name}()")
+        print(f"At line: {line_no}")
+
+        # Print full traceback
+        print("\nTraceback (most recent call last):")
+        traceback.print_stack(limit=2)
+
+        exit(1)
+
+
+#Loads the json file
+def open_file(filename, listname):
+    full_path = f'1. Algorithm Design/WEEK11-14/tests/{filename}' #My computer is weird ok?
+    my_assert(os.path.exists(full_path), f'File: "{full_path}" not found') #File Not Found
+
+    with open(full_path, 'r') as file:
+        data = json.load(file)
+    my_assert(listname in data, f"Key '{listname}' not found in file {filename}") #List Not Found
+    my_assert(isinstance(data[listname], list), f"'{listname}' must be a list") #List is a List
+    
+    return data[listname]
+
+
+def subarray(data):
+    #Check data
+    my_assert(len(data) >= 10, "Data must contain at least 10 elements to compute one subarray average.")
+    my_assert(isinstance(data, list), "Data must be a list.")
+    my_assert(all(isinstance(x, (int, float)) for x in data), "All items in data must be numbers (int or float).")
+
+    #Function Variables
+    starting_value = 0
+    best_average = 0
+    averages_list = []
+    num_of_subarray = int(input('How many averages are you looking for? '))
+
+    #Check user input
+    my_assert(num_of_subarray <= len(data) - 10, "num_of_subarray must be small enough to allow full subarrays of length 10")
+    my_assert(isinstance(num_of_subarray, int), "Number of subarrays must be an integer.")
+    my_assert(num_of_subarray >= 0, "Number of subarrays must be non-negative.")
+
+    #Averages Algorithm
+    while starting_value <= num_of_subarray:
+        current_average = 0
+
+        for i in data[starting_value : num_of_subarray + 10]:
+            current_average += i
+
+        average = current_average / 10
+        averages_list.append(average)
+        starting_value += 1
+
+        if average > best_average:
+            best_average = average
+
+    return averages_list, best_average
+
+
+def main():
+
+    file_name = input('Filename: ')
+    list_name = input('Listname: ')
+    data = open_file(file_name, list_name)
+
+    averages_list, best_average = subarray(data)
+    print(averages_list)
+    print(best_average)
+
+main()
+
