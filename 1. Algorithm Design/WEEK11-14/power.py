@@ -44,7 +44,19 @@ function MAIN()
     print(averages_list)
     print(f'The Highest Average was {best_average}')
 """
-
+# 1. Name:
+#      -Stockton Rose-
+# 2. Assignment Name:
+#      Lab 13: Power
+# 3. Assignment Description:
+#      -This program gives us the averages of a certain amount of time which is taken from 
+#       data of a bicycle. It lets us know what the highest average was and the list-
+# 4. What was the hardest part? Be as specific as possible.
+#      -The hardest part was debugging since this algorithm is a little bit weirder
+#       than other algorithms we've designed in the past-
+# 5. How long did it take for you to complete the assignment?
+#      Coding: 3 hours
+#      Debugging: 2 hours
 
 import os
 import traceback
