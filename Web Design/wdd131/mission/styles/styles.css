@@ -1,0 +1,33 @@
+body{
+    font: "Times New Roman";
+    max-width: 600px;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 100px;
+    border: 1px solid gray;
+
+}
+
+header{
+    justify-self: center;
+    letter-spacing: 5px;
+}
+
+header p{
+    color: #006EB6;
+    font-style: bold;
+    font-size: medium;
+    justify-self: center;
+    border-bottom: 1px solid gray;
+}
+
+body p, li{
+    align-items: left;
+    line-height: 1.5;
+}
+
+.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
