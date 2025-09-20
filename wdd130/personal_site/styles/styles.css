@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+/*
+
+In the long sections of code I try to 
+follow this formula for easier readability:
+
+example {
+    sizes
+    alignment
+
+    margins
+    padding
+
+    colors
+
+    etc.
+}
+
+*/
+
+/*General Code*/
+
+.collage-img, .map-img {
+    width: 500px;
+}
+
+body {
+    font-family: Times, Helvetica, Arial;
+}
+
+
+
+
+/*Header All Code*/
+
+header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+
+    background-color: #022122;
+}
+
+nav {
+    font-size: 2.5em;
+    line-height: 2em;
+    
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+
+    padding-left: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+nav a {
+    padding: 1em;
+
+    color: #0d7575;
+}
+
+nav a:hover {
+    background-color: #0d7575;
+    color: #dbf9f0;
+}
+
+#logo_link {
+    display: flex;
+    align-items: center;
+
+    padding: 25px;
+}
+
+.logo {
+    width: 200px;
+    height: 175px;
+
+    border: 10px solid#0d7575;
+
+    border-radius: 50%;
+}
+
+
+
+
+
+/*Footer All Code*/
+
+footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+
+    padding: 50px 50px 50px 50px;
+
+    background-color: #022122;
+}
+
+#footer-flex, .social {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+
+}
+
+.the-plan {
+    width: 20%;
+    font-size: 3em;
+    text-align: center;
+    align-content: center;
+
+    color: #0d7575;
+}
+
+.insp-msg {
+    width: 34%;
+    font-size:3em;
+    text-align: left;
+
+
+    color: #dbf9f0;
+}
+
+
+.the-plan:hover {
+    background-color: #0d7575;
+    color: #dbf9f0;
+}
+
+.l-logo {
+    width: 100px;
+
+    padding-top:25px;
+}
+
+.y-logo {
+    width: 150px;
+}
+
+
+
+
+/*Banner All Code*/
+
+#banner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+
+    padding-bottom: 50px;
+}
+.banner-bg {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    background-color: #91d6a8;
+}
+
+.banner-msg {
+    font-size: 5em;
+    font-family: "Audiowide", Times, Helvetica;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -70%);
+
+    margin: 0 auto;
+    text-align: center;
+
+    color: #0d7575;
+}
+
+
+
+
+/*Main All Code*/
+
+#home-grid {
+    font-size: 1.8em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50% 50%;
+
+    margin: 0 auto;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.h-text1 {
+    align-self: center;
+    padding-bottom: 50px;
+}
+
+.rog-container, .bab-container {
+    position: relative;
+    justify-self: center;
+    align-self: center;
+  }
+  
+.rogers {
+    width: 55%;
+    justify-self: center;
+}
+
+.h-text2 {
+    align-self: center;
+}
+.babby {
+    height: 500px;
+    justify-self: center;
+}
+
+.babby, .rogers {
+    border: 5px solid #0d7575;
+    transform: scale(1.1);
+    box-shadow: 5px 5px 10px #6f7364;
+
+    opacity: 1;
+    transition: 1s ease;
+    backface-visibility: hidden;
+}
+
+.rog-text, .bab-text {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    color: black;
+  }
+
+  /*Positioning*/
+  .rog-text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-130%, -80%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .bab-text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -110%);
+    -ms-transform: translate(-50%, -50%);
+  }
+
+  .rog-container:hover .rogers, .bab-container:hover .babby {
+    opacity: 0.4;
+  }
+  
+  
+  .rog-container:hover .rog-text, .bab-container:hover .bab-text {
+    opacity: 1;
+  }
+
+
+/* -- This is the sample code for what I want to implement into my main code
+
+   -- I did the image overlay fade "how to" on my two pictures on my main page
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+  
+*/
+
+
+
+
+/*Page 2 (TurboSquad) All Code*/
+
+#turbo-grid {
+    font-size: 1.8em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    margin: 0 auto;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.paul-img, .carl-img {
+    width: 425px;
+    justify-self: center;
+
+    border: 5px solid #0d7575;
+    box-shadow: 5px 5px 10px #6f7364;
+}
+
+.t-text1 {
+    font-size: 1.3em;
+    align-self: center;
+
+    background-color: #91d6a8;
+    color: #0d7575;
+
+    border: 15px solid #91d6a8;
+}
+
+.col-t-text2 {
+    background-color: #91d6a8;
+    color: #0d7575;
+
+    border: 15px solid #91d6a8;
+}
+
+
+
+
+/*Page 3 (Destine) All Code*/
+#destine-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 4fr 2fr;
+
+    margin: 0 auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+}
+
+/*Grid Columns*/
+.col-d-text1, .collage-img, .d-text2, .d-text1 {
+    grid-column: 1/2;
+}
+
+.long-text, .map-img {
+    grid-column: 2/3;
+}
+
+.col-d-text2 {
+    grid-column: 1/3;
+}
+
+/*Grid Rows (and the rest of the code)*/
+.col-d-text1 {
+    grid-row: 1/2;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.8em;
+
+    background-color: #91d6a8;
+    color: #0d7575;
+    border: 15px solid #91d6a8;
+}
+
+.map-img {
+    grid-row: 1/2;
+    justify-self: right;
+    width: 600px;
+
+    margin-right: 150px;
+}
+
+.collage-img{
+    grid-row: 2/3;
+    width: 800px;
+    justify-self: center;
+    align-self:center;
+}
+
+.long-text {
+    grid-row: 2/3;
+    font-size: 2.5em;
+    justify-self: center;
+
+    padding-top: 135px;
+    width: 70%;
+}
+
+.d-text2 {
+    grid-row: 3/4;
+    font-size: 1.8em;
+    justify-self: center;
+    align-self: first baseline;
+
+    background-color: #022122;
+    color: #dbf9f0;
+    border: 15px solid #022122;
+}
+
+.col-d-text2 {
+    grid-row: 3/4;
+    font-size: 2em;
+    align-self: last baseline;
+    text-align: center;
+
+    background-color: #91d6a8;
+    color: #0d7575;
+    border: 15px solid #91d6a8;
+}
+
+
+.collage-img, .map-img {
+    border: 5px solid #0d7575;
+    box-shadow: 5px 5px 10px #6f7364;
+}

@@ -1,0 +1,37 @@
+* {
+    border: 1px solid red
+}
+
+
+
+.cherry {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+.main_p {
+    font-size: 4em;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 50%;
+}
+
+.p2 {
+    font-size: 4em;
+    color: red;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: 50%;
+}
+
+.background{
+    height: 500px;
+    width: 500px;
+    background-color: rgb(145, 171, 177);
+    margin: 0 auto;
+    display: block
+}

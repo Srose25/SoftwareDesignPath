@@ -1,0 +1,82 @@
+* {
+    border: 1px solid red;
+}
+
+img {
+    width: 20%;
+    display: block;
+    margin: 0 auto;
+}
+
+body {
+    background-color: steelblue;
+}
+
+.title {
+    color: white;
+    font: arial serif;
+    font-size: 220%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+.title:hover {
+    color: black;
+}
+
+.quote_1 {
+    width: 50%;
+    color: white;
+    font-size: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.sig {
+    color: white;
+    text-align: center;
+}
+
+.step1 {
+    width: 50%;
+    font-size: 120%;
+    margin: 10px auto;
+    
+}
+
+.step2 {
+    width: 50%;
+    font-size: 120%;
+    margin: 10px auto;
+}
+
+.step3 {
+    width: 50%;
+    font-size: 120%;
+    margin: 10px auto;
+}
+
+.step4 {
+    width: 50%;
+    font-size: 120%;
+    margin: 10px auto;
+}
+
+.big_quote {
+    width: 30%;
+    color: white;
+    font-size: 200%;
+    margin: 30px auto;
+}
+
+.footer {
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.footer2 {
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
