@@ -31,3 +31,23 @@ body p, li{
   display: block;
   margin: 0 auto;
 }
+
+
+/*dark mode*/
+.dark {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+.dark header p {
+  color: #A0D4ED;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.dark ol li {
+  color: #f1f1f1;
+}
+
+.dark .title h1 {
+  color: #ffffff;
+}
