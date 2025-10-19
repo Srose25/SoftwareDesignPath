@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Read for Fun!</title>
     <meta name="description" content="A friendly blog for parents and kids alike, to discover new and old books.">
-    <meta name="autho" content="Stockton Rose">
+    <meta name="author" content="Stockton Rose">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
@@ -14,27 +14,34 @@
     <header>
         <h1>Kids Read for Fun!</h1>
         <nav class="nav-banner">
-            <a>About</a>
-            <a>Archive</a>
-            <a>Search</a>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Archive</a></li>
+                <li><a href="#">Search</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
-        <div id="book-info">
-            <h4>July 5, 2022</h4>
-            <p>10-14</p>
-            <p>Fantasy</p>
-            <p>****</p>
+        <div class="main-grid">
+            <div id="book-info"> <!--Left Side of Grid-->
+                <h4>July 5, 2022</h4>
+                <p>10-14</p>
+                <p>Fantasy</p>
+                <p>****</p>
+            </div>
+
+            <div id="book-content"> <!--Middle of Grid-->
+                <h3>Septimus Heap Book One: Magyk</h3>
+                <img src="images/magyk.jpg" alt="Magyk">
+                <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+                    blah blahblah blah blah blah blah blah blah blah blah blah blah blah</p>
+            </div>
         </div>
 
-        <div id="book-content">
-            <h3>Septimus Heap Book One: Magyk</h3>
-            <img src="#" alt=" ">
-            <p>blah blah blah</p>
+        <div id="filters">
+            <p>filters</p>
         </div>
-
-        <div id="filters"></div>
     </main>
 
     <footer></footer>
