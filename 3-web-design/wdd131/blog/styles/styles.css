@@ -140,6 +140,23 @@ main{
 }
 
 
+/*Accessibility / Keyboards*/
+.skiptocontent a {
+  position: absolute;
+  left: -180px;
+  top: 0;
+  background: var(--accent2-color);
+  color: white;
+  padding: 10px 10px;
+  transition: left 0.3s;
+}
+
+.skiptocontent a:focus {
+  left: 0;
+}
+
+
+
 /*Small Screen*/
 
 @media (max-width: 1000px) {
