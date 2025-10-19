@@ -1,6 +1,6 @@
 
 :root{
-    --primary-color:#FF6038;
+    --primary-color:#ab2908;
     --secondary-color:#00C7B0;
 
     --accent1-color:#FF8F33;
@@ -120,9 +120,9 @@ main{
     /*height: auto;*/
 }
 
-#book-content h3 {
+#book-content h4 {
     font-family: var(--heading-font);
-    font-size: 2em;
+    font-size: 2.4em;
     color: var(--primary-color);
 }
 
